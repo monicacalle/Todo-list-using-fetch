@@ -7,6 +7,7 @@ const Form = () => {
     done: false,
   });
   const [list, setList] = useState([]);
+  console.log("list", list);
 
   const handleChange = (event) => {
     setTask({
@@ -82,9 +83,13 @@ const Form = () => {
       </form>
       <button onClick={deleteAll}>delete all</button>
       <ul>
-        {list.map((item, index) => {
-          return <TodoItem todoItem={item} deleteTodo={onDelete} key={index} />;
-        })}
+        {list &&
+          Array.isArray(list) &&
+          list.map((item, index) => {
+            return (
+              <TodoItem todoItem={item} deleteTodo={onDelete} key={index} />
+            );
+          })}
       </ul>
     </div>
   );
