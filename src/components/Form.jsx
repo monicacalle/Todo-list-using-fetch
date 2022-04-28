@@ -55,6 +55,13 @@ const Form = () => {
     const filteredTodoList = list.filter((todoItem) => {
       return todoItem.label !== item.label;
     });
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/monicacalle", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(filteredTodoList),
+    });
 
     setList(filteredTodoList);
   };
